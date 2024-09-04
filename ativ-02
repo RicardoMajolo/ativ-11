@@ -1,0 +1,27 @@
+/* 2. Crie um programa que leia uma string e conte quantas vogais ela possui. */
+#include <stdio.h>
+#include <string.h>
+int main () {
+    char string[50];
+    int i=0;
+    int j=0;
+    
+    printf ("informe uma string : ");
+    fgets (string, sizeof(string), stdin);
+    while (string[i] != '\0'){
+        if (string[i] == 'a' ||
+        string[i] == 'e' ||
+        string[i] == 'i' ||
+        string[i] == 'o' ||
+        string[i] == 'u' ||
+        string[i] == 'A' ||
+        string[i] == 'E' ||
+        string[i] == 'I' ||
+        string[i] == 'O' ||
+        string[i] == 'U'){
+            j++;
+        }
+        i++;
+    }
+    printf ("%i vogais", j);
+}
