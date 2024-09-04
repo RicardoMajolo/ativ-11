@@ -1,0 +1,59 @@
+/*4. Faça um programa que concatene (junte) duas strings informadas pelo usuário. O programa deve
+conter duas opções: 1. Sem utilizar a função strcat; e 2. Utilizando a função strcat. Ao final da
+execução, as 3 strings devem ser apresentadas */
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+void concatenar_sem_strcat(const char *origem1, const char *origem2, char *destino) {
+    int i = 0;
+    while (origem1[i] != '\0' && origem1[i] != '\n') {
+        destino[i] = origem1[i];
+        i++;
+    }
+    int j = 0;
+    while (origem2[j] != '\0' && origem2[j] != '\n') {
+        destino[i] = origem2[j];
+        i++;
+        j++;
+    }
+    destino[i] = '\0';
+}
+
+void concatenar_com_strcat(const char *origem1, const char *origem2, char *destino) {
+    strcpy(destino, origem1);
+    strcat(destino, origem2);
+}
+
+int main() {
+    char string1[50];
+    char string2[50];
+    char resultado1[100]; 
+    char resultado2[100]; 
+    int opcao;
+
+    printf("Informe uma string: ");
+    fgets(string1, sizeof(string1), stdin);
+    string1[strcspn(string1, "\n")] = '\0';
+    printf("Informe outra string: ");
+    fgets(string2, sizeof(string2), stdin);
+    string2[strcspn(string2, "\n")] = '\0';
+    printf("Escolha a forma:\n1 - Sem strcat\n2 - Com strcat\n");
+    scanf("%d", &opcao);
+
+    switch (opcao) {
+        case 1:
+            concatenar_sem_strcat(string1, string2, resultado1);
+            printf("%s\n%s\n%s",string1, string2, resultado1);
+            break;
+        case 2:
+            concatenar_com_strcat(string1, string2, resultado2);
+            printf("%s\n%s\n%s",string1, string2, resultado2);
+            break;
+        default:
+            printf("Opção inválida.\n");
+            break;
+    }
+
+    return 0;
+}
